@@ -3,9 +3,9 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-function App2() {
-  const [count, setCount] = useState(0);
-  // count = 1; 상수 이기 때문에 오류 발생
+function App() {
+  const [count, setCount] = useState(123);
+  // count = 1; 상수이기 때문에 오류 발생
   const [firstName, setFirstName] = useState("일");
   const [lastName, setLastName] = useState("김");
 
@@ -21,9 +21,9 @@ function App2() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>React 수업을 시작합니다.</h1>
+      <h1>React 수업을 시작합니다. 배가 고픕니다.</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount((count) => count + 100)}>
           count is {count}
         </button>
         <p>
@@ -37,4 +37,4 @@ function App2() {
   );
 }
 
-export default App2;
+export default App;

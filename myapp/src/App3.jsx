@@ -1,7 +1,8 @@
-import "./App.css";
 import Counter3 from "./Counter3";
+import MyComponent3 from "./MyComponent3";
+import "./App.css";
 
-function App3() {
+function App() {
   return (
     <>
       <Counter3 />
@@ -9,4 +10,4 @@ function App3() {
   );
 }
 
-export default App3;
+export default App;

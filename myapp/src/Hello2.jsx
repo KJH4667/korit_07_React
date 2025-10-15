@@ -1,11 +1,9 @@
-function Hello2() {
-
+function Hello2(props) {
   return (
-    <h1>
-      안녕하세요 {props.lastName}
-      {props.firstName}
-    </h1>
+    <h2>
+      안녕하세요 {props.lastName} {props.firstName}
+    </h2>
   );
 }
 
-export default Hello2; 
+export default Hello2;
