@@ -1,6 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/styles/ag-grid.css'; 
+import 'ag-grid-community/styles/ag-theme-material.css'; 
 import "./App.css";
+import { ColDef, ICellEditorParams } from "ag-grid-community";
 
 type Repository = {
   id: number;
@@ -11,6 +15,20 @@ type Repository = {
 function App() {
   const [keyword, setKeyword] = useState("");
   const [repodata, setRepodata] = useState<Repository[]>([]);
+  const [columnDefs] = useState<ColDef[]>([
+    { field: "id", sortable: true, filter: true }, // 컬럼1
+    { field: "full_name", sortable: true, filter: true }, // 컬럼2
+    { field: "html_url", sortable: true, filter: false }, // 컬럼3
+    {
+      headerName: 'Actions',
+      field: 'full_name',
+      cellRenderer: (params: ICellEditorParams) => (
+        <button onClick={() => alert(params.value)}>
+          Press Me!
+        </button>
+      )
+    }
+  ]);
 
   const handleClick = () => {
     axios
@@ -22,31 +40,24 @@ function App() {
   };
 
   return (
-    <>
+    <div className="App">
       <input
         type="text"
-        onChange={(e) => setKeyword(e.target.value)}
-        value={keyword}
-      />
-      <button onClick={handleClick}>Search</button>
-      {repodata.length === 0 ? (
-        <p>No data available</p>
-      ) : (
-        <table>
-          <tbody>
-            {repodata.map(repo => 
-              <tr key={repo.id}>
-                <td>{repo.full_name}</td>
-                <td>
-                  <a href={repo.html_url}>{repo.html_url}</a>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      )}
-    </>
-  );
-}
+        onChange={(e) => setKeyword(e.target.value)} value={keyword}/>
+        <button onClick={handleClick}>Search</button>
+        <div className="ag-theme-material" style={{height: 500, width: 850}}> 
+
+          <AgGridReact rowData={repodata}
+          columnDefs={columnDefs}
+          pagination={true}
+          paginationPageSize={5}
+          />
+        </div>
+        
+    </ div>
+  )
+
+  }
+
 
 export default App;
