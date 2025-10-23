@@ -1,5 +1,5 @@
 import { Dialog, DialogActions, DialogTitle, Button } from "@mui/material";
-import { Car } from "../types";
+import { Car } from "../types"; //  ../ 상위폴더 라는 뜻.  ./ 현재 폴더 라는뜻 
 import { ChangeEvent, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addCar } from "../api/carapi";
@@ -46,6 +46,7 @@ function AddCar() {
       modelYear: 0,
       price: 0,
     });
+    handleClickClose();
   }
 
   return (

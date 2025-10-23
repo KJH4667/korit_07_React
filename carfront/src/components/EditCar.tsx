@@ -1,7 +1,7 @@
 // EditCar.tsx
 import { ChangeEvent, useState } from "react";
 import { Car, CarResponse, CarEntity } from "../types";
-import { Dialog, DialogActions, DialogTitle, IconButton, Tooltip } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogTitle, IconButton, Tooltip } from "@mui/material";
 import CarDialogContent from "./CarDialogContent";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateCar } from "../api/carapi";
@@ -33,7 +33,6 @@ function EditCar({ cardata }: FormProps) {
   });
 
   const handleClickOpen = () => {
-    setOpen(true);
     // Modal이 열렸을때 특정 id값에 맞느 정보를 불러오면 좋겠다. 그래서 AddCar에서의 handleClickOpen()과 코드라인의 차이가 생깁니다.
     setCar({
       brand: cardata.brand,
@@ -79,13 +78,10 @@ function EditCar({ cardata }: FormProps) {
       </Tooltip>
       <Dialog open={open} onClose={handleClickClose}>
         <DialogTitle>Edit Car</DialogTitle>
-        <CarDialogContent
-          car={car}
-          handleChange={handleChange}
-        ></CarDialogContent>
+        <CarDialogContent car={car} handleChange={handleChange}/>
         <DialogActions>
-          <button onClick={handleClickClose}>Cancel | 취소</button>
-          <button onClick={handleSave}>Save | 저장</button>
+          <Button onClick={handleClickClose}>Cancel | 취소</Button>
+          <Button onClick={handleSave}>Save | 저장</Button>
         </DialogActions>
       </Dialog>
     </>

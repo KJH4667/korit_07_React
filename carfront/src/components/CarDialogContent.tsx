@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import { Car } from "../types";
-import { DialogContent, TextField, Stack } from "@mui/material";
+import { DialogContent, TextField, Stack, Snackbar } from "@mui/material";
 
 type CarDialogFormprops = {
   car: Car;
@@ -13,8 +13,8 @@ function CarDialogContent({car, handleChange} : CarDialogFormprops) {
     <>
       <DialogContent>
         <Stack spacing={2} mt={1}>
-          <TextField name="Brand" value={car.brand} onChange={handleChange} />{" "}
-          <br />
+          <TextField label="Brand" name="brand" value={car.brand} onChange={handleChange} />
+          
           <TextField
             label="Model"
             type="text"
