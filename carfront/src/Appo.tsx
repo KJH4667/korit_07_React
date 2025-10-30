@@ -245,7 +245,7 @@ const NewsPage: React.FC = () => {
   );
 };
 
-const styles: { [key: string]: React.CSSProperties } = {
+const styles: { [key: string]: React.CSSProperties } = { /* key:string 이라서 string 문자형만 작성 가능한것 같다.  id가 없는것을 보니. */
   container: {
     maxWidth: "900px",
     margin: "0 auto",
